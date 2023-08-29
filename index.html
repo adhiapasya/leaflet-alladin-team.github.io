@@ -237,6 +237,10 @@ document.getElementById("hospital2").addEventListener("click", showAmbulanceButt
 document.getElementById("hospital3").addEventListener("click", showAmbulanceButton);
 
 function showAmbulanceButton() {
+    // Menyembunyikan tombol "Mencari IGD Terdekat" dan pilihan IGD
+    document.getElementById("findHospital").style.display = "none";
+    document.getElementById("hospitalInfo").style.display = "none";
+
     // Menampilkan tombol "Mencari Ambulans Terdekat"
     document.getElementById("findAmbulance").style.display = "block";
 }

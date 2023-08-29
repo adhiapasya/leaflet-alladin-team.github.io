@@ -20,6 +20,7 @@
     cursor: pointer;
 }
 #findAmbulance {
+    display: none;
     padding: 10px;
     background-color: #007bff;
     color: white;

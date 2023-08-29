@@ -55,12 +55,3 @@ img[src="emergencydept.png"] {
     height: 1px;
 }
 
-#waitingResponse {
-    font-size: 24px;  /* Ukuran font */
-    font-weight: bold;  /* Membuat teks tebal */
-    text-align: center;  /* Menengahkan teks */
-    position: fixed;  /* Posisi tetap */
-    top: 50%;  /* Posisi vertikal tengah */
-    left: 50%;  /* Posisi horizontal tengah */
-    transform: translate(-50%, -50%);  /* Penyesuaian untuk benar-benar menengahkan elemen */
-}

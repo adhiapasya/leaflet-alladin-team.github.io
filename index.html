@@ -44,7 +44,7 @@
         <button id="orderAmbulance" style="display:none;">Pesan Ambulan Sekarang</button>
         
     </div>
-
+    <div id="waitingResponse" style="display:none;"></div>
 </div>
 
 </body>
@@ -53,6 +53,7 @@
 <!-- leaflet js  -->
 <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
 <script>
+    document.addEventListener("DOMContentLoaded", function() {
     // Map initialization 
     var map = L.map('map').setView([14.0860746, 100.608406], 6);
     // Koordinat ambulance
@@ -271,5 +272,6 @@ document.getElementById("orderAmbulance").addEventListener("click", function() {
         }
         document.getElementById("waitingResponse").innerText = waitingText + dots;
     }, 1000);
+});
 });
 </script>

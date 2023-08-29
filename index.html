@@ -245,4 +245,31 @@ function showAmbulanceButton() {
     document.getElementById("findAmbulance").style.display = "block";
 }
 
+document.getElementById("orderAmbulance").addEventListener("click", function() {
+    // Sembunyikan semua navbar dan informasi sebelumnya
+    document.getElementById("findHospital").style.display = "none";
+    document.getElementById("hospitalInfo").style.display = "none";
+    document.getElementById("findAmbulance").style.display = "none";
+    document.getElementById("ambulanceInfo").style.display = "none";
+    document.getElementById("orderAmbulance").style.display = "none";
+
+    // Tampilkan teks "menunggu response ambulans"
+    var waitingText = "menunggu response ambulans";
+    var dots = ".";
+    var counter = 0;
+    var waitingElement = document.createElement("div");
+    waitingElement.id = "waitingResponse";
+    document.body.appendChild(waitingElement);
+
+    var waitingInterval = setInterval(function() {
+        counter++;
+        if (counter > 5) {
+            counter = 1;
+            dots = ".";
+        } else {
+            dots += ".";
+        }
+        document.getElementById("waitingResponse").innerText = waitingText + dots;
+    }, 1000);
+});
 </script>

@@ -27,13 +27,20 @@
     <div id="map"></div>
     <!--  di sini navbar-->
     <div class="navbar">
+        <button id="findHospital">Mencari IGD Terdekat</button>
+            <div id="hospitalInfo" style="display:none;">
+                <p>Pilih IGD:</p>
+                <div class="hospitalBar" id="hospital1">IGD Santosa</div>
+                <div class="hospitalBar" id="hospital2">IGD RSUD</div>
+                <div class="hospitalBar" id="hospital3">IGD Immanuel</div>
+            </div>
         <button id="findAmbulance">Mencari Ambulans Terdekat</button>
-        <div id="ambulanceInfo" style="display:none;">
-            <p>Pilih Ambulans:</p>
-            <div class="ambulanceBar" id="ambulance1">Ambulans 1</div>
-            <div class="ambulanceBar" id="ambulance2">Ambulans 2</div>
-            <div class="ambulanceBar" id="ambulance3">Ambulans 3</div>
-        </div>
+            <div id="ambulanceInfo" style="display:none;">
+                <p>Pilih Ambulans:</p>
+                <div class="ambulanceBar" id="ambulance1">Ambulans 1</div>
+                <div class="ambulanceBar" id="ambulance2">Ambulans 2</div>
+                <div class="ambulanceBar" id="ambulance3">Ambulans 3</div>
+            </div>
         <button id="orderAmbulance" style="display:none;">Pesan Ambulan Sekarang</button>
         
     </div>
@@ -141,6 +148,19 @@ document.getElementById("findAmbulance").addEventListener("click", function() {
     }
 });
 
+// // Fungsi untuk menambahkan marker igd
+// function addHospital(coord, number) {
+//     var hospitalIcon = L.icon({
+//         iconUrl: 'emergencydept.png',  // Nama ikon IGD
+//         iconSize: [38, 38],
+//     });
+
+//     var hospitalMarker = L.marker([coord.lat, coord.long], {icon: hospitalIcon})
+//         .addTo(map)
+//         .bindPopup("IGD " + number);
+
+//     hospitalMarker.openPopup();
+// }
 // Fungsi untuk menambahkan marker ambulance
 function addAmbulance(coord, number) {
     var ambulanceIcon = L.icon({
@@ -181,5 +201,44 @@ function showOrderButton() {
     document.getElementById("orderAmbulance").style.display = "block";
 }
 
+document.getElementById("findHospital").addEventListener("click", function() {
+    // Koordinat IGD
+    var hospitalCoords = [
+        { lat: -6.95174248857057, long: 107.58650544499442 }, // IGD Santosa
+        { lat: -6.9422852270373605, long: 107.59405854538834 }, // IGD RSUD
+        { lat: -6.935895077776919, long: 107.59920838676649 }  // IGD Immanuel
+    ];
+
+    for (var i = 0; i < hospitalCoords.length; i++) {
+        addHospital(hospitalCoords[i], i + 1);
+    }
+
+    // Menampilkan informasi IGD
+    document.getElementById("hospitalInfo").style.display = "block";
+});
+
+// Fungsi untuk menambahkan marker IGD
+function addHospital(coord, number) {
+    var hospitalIcon = L.icon({
+        iconUrl: 'emergencydept.png',
+        iconSize: [38, 38],
+    });
+
+    var hospitalMarker = L.marker([coord.lat, coord.long], {icon: hospitalIcon})
+        .addTo(map)
+        .bindPopup("IGD " + number);
+
+    hospitalMarker.openPopup();
+}
+
+// Event listener untuk setiap bar informasi IGD
+document.getElementById("hospital1").addEventListener("click", showAmbulanceButton);
+document.getElementById("hospital2").addEventListener("click", showAmbulanceButton);
+document.getElementById("hospital3").addEventListener("click", showAmbulanceButton);
+
+function showAmbulanceButton() {
+    // Menampilkan tombol "Mencari Ambulans Terdekat"
+    document.getElementById("findAmbulance").style.display = "block";
+}
 
 </script>

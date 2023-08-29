@@ -12,7 +12,13 @@
     justify-content: center; /* Tambahkan baris ini */
     align-items: center; /* Tambahkan baris ini */
 }
-
+#findHospital {
+    padding: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
 #findAmbulance {
     padding: 10px;
     background-color: #007bff;
@@ -33,5 +39,12 @@
     background-color: #007bff;
     color: white;
     border: none;
+    cursor: pointer;
+}
+
+.hospitalBar {
+    padding: 10px;
+    background-color: #f1f1f1;
+    border: 1px solid #ccc;
     cursor: pointer;
 }

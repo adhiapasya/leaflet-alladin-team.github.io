@@ -25,11 +25,19 @@
 
 <body>
     <div id="map"></div>
-    <div class="navbar">
     <!--  di sini navbar-->
     <div class="navbar">
         <button id="findAmbulance">Mencari Ambulans Terdekat</button>
+        <div id="ambulanceInfo" style="display:none;">
+            <p>Pilih Ambulans:</p>
+            <div class="ambulanceBar" id="ambulance1">Ambulans 1</div>
+            <div class="ambulanceBar" id="ambulance2">Ambulans 2</div>
+            <div class="ambulanceBar" id="ambulance3">Ambulans 3</div>
+        </div>
+        <button id="orderAmbulance" style="display:none;">Pesan Ambulan Sekarang</button>
+        
     </div>
+
 </div>
 
 </body>
@@ -147,4 +155,31 @@ function addAmbulance(coord, number) {
     // Menampilkan popup saat marker ditambahkan
     ambulanceMarker.openPopup();
 }
+
+document.getElementById("findAmbulance").addEventListener("click", function() {
+    // ... (kode untuk menambahkan marker ambulans)
+    var ambulanceCoords = [
+        { lat: -6.937844, long: 107.590047 }, // Ambulans1
+        { lat: -6.936940, long: 107.596816 }, // Ambulans2
+        { lat: -6.956772, long: 107.612285 }  // Ambulans3
+    ];
+
+    for (var i = 0; i < ambulanceCoords.length; i++) {
+        addAmbulance(ambulanceCoords[i], i + 1); // i + 1 akan menjadi nomor ambulans
+    }
+    // Menampilkan informasi ambulans
+    document.getElementById("ambulanceInfo").style.display = "block";
+});
+
+// Event listener untuk setiap bar informasi ambulans
+document.getElementById("ambulance1").addEventListener("click", showOrderButton);
+document.getElementById("ambulance2").addEventListener("click", showOrderButton);
+document.getElementById("ambulance3").addEventListener("click", showOrderButton);
+
+function showOrderButton() {
+    // Menampilkan tombol "Pesan Ambulan Sekarang"
+    document.getElementById("orderAmbulance").style.display = "block";
+}
+
+
 </script>

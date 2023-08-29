@@ -41,16 +41,16 @@
     // Map initialization 
     var map = L.map('map').setView([14.0860746, 100.608406], 6);
     // Koordinat ambulance
-    var ambulanceLat = -6.937844;
-    var ambulanceLong = 107.590047;
+    // var ambulanceLat = -6.937844;
+    // var ambulanceLong = 107.590047;
 
-    // Membuat marker untuk ambulance
-    var ambulanceIcon = L.icon({
-        iconUrl: 'ambulance.png',
-        iconSize: [38, 38], // ukuran ikon
-    });
+    // // Membuat marker untuk ambulance
+    // var ambulanceIcon = L.icon({
+    //     iconUrl: 'ambulance.png',
+    //     iconSize: [38, 38], // ukuran ikon
+    // });
 
-    var ambulanceMarker = L.marker([ambulanceLat, ambulanceLong], {icon: ambulanceIcon}).addTo(map);
+    // var ambulanceMarker = L.marker([ambulanceLat, ambulanceLong], {icon: ambulanceIcon}).addTo(map);
     //osm layer
     var osm = L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
@@ -104,4 +104,47 @@
 
         var ambulanceMarker = L.marker([ambulanceLat, ambulanceLong], {icon: ambulanceIcon}).addTo(map);
     });
+
+//     document.getElementById("findAmbulance").addEventListener("click", function() {
+//     // Koordinat ambulance (contoh)
+//     var ambulanceLat = -6.937844;
+//     var ambulanceLong = 107.590047;
+
+//     // Membuat marker untuk ambulance
+//     var ambulanceIcon = L.icon({
+//         iconUrl: 'ambulance.png',
+//         iconSize: [38, 38], // ukuran ikon
+//     });
+
+//     var ambulanceMarker = L.marker([ambulanceLat, ambulanceLong], {icon: ambulanceIcon}).addTo(map);
+// });
+
+document.getElementById("findAmbulance").addEventListener("click", function() {
+    // Array koordinat untuk ketiga ambulans
+    var ambulanceCoords = [
+        { lat: -6.937844, long: 107.590047 }, // Ambulans1
+        { lat: -6.936940, long: 107.596816 }, // Ambulans2
+        { lat: -6.956772, long: 107.612285 }  // Ambulans3
+    ];
+
+    // Loop untuk menambahkan marker untuk setiap ambulans
+    for (var i = 0; i < ambulanceCoords.length; i++) {
+        addAmbulance(ambulanceCoords[i], i + 1); // i + 1 akan menjadi nomor ambulans
+    }
+});
+
+// Fungsi untuk menambahkan marker ambulance
+function addAmbulance(coord, number) {
+    var ambulanceIcon = L.icon({
+        iconUrl: 'ambulance.png',
+        iconSize: [38, 38], // ukuran ikon
+    });
+
+    var ambulanceMarker = L.marker([coord.lat, coord.long], {icon: ambulanceIcon})
+        .addTo(map)
+        .bindPopup("Ambulans " + number); // Menambahkan popup dengan nomor ambulans
+
+    // Menampilkan popup saat marker ditambahkan
+    ambulanceMarker.openPopup();
+}
 </script>

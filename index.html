@@ -78,7 +78,7 @@
     } else {
         setInterval(() => {
             navigator.geolocation.getCurrentPosition(getPosition)
-        }, 60000);
+        }, 30000);
     }
 
     var marker, circle;
@@ -171,7 +171,7 @@ function addAmbulance(coord, number) {
 
     var ambulanceMarker = L.marker([coord.lat, coord.long], {icon: ambulanceIcon})
         .addTo(map)
-        .bindPopup("Ambulans " + number); // Menambahkan popup dengan nomor ambulans
+        .bindPopup("Jarak Ambulans " + number +"km"); // Menambahkan popup dengan nomor ambulans
 
     // Menampilkan popup saat marker ditambahkan
     ambulanceMarker.openPopup();
@@ -227,7 +227,7 @@ function addHospital(coord, number) {
 
     var hospitalMarker = L.marker([coord.lat, coord.long], {icon: hospitalIcon})
         .addTo(map)
-        .bindPopup("IGD " + number);
+        .bindPopup("Jarak IGD" + number + "km");
 
     hospitalMarker.openPopup();
 }
